@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Raphael
+ * @author Raphael Henocq et Luciens badoux
  */
 public class Group {
    private Person sender;

@@ -5,12 +5,11 @@
  */
 package logic;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
- * @author Raphael
+ * @author Raphael Henocq et Luciens badoux
  */
 public class Mail {
 	private Group group;
@@ -31,7 +30,7 @@ public class Mail {
 		return group.getSender().getAddress();
 	}
 
-	public List<Person> getReceivers(){ // je sais plus si c'est possible avec un foreach
+	public List<Person> getReceivers(){ 
 		
 		return group.getReceivers();
 	}
@@ -50,7 +49,7 @@ public class Mail {
 		return data;
 	}
 
-	public String getCC() { // Un seul Cc, peut être faire en sorte de pouvoir en mettre plus
+	public String getCC() { 
 		return witnessCc.getAddress();
 	}
 

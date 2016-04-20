@@ -19,7 +19,7 @@ import logic.Person;
 
 /**
  *
- * @author Raphael
+ * @author Raphael Henocq et Luciens badoux
  */
 public class SmtpClient implements ISmtpClient{
 	
@@ -34,21 +34,18 @@ public class SmtpClient implements ISmtpClient{
    
    public void sendMail(Mail mail) throws IOException {
 	   
-	   System.out.println("TEST data mail: " + mail.getData());
-	   
 	   Socket socket = new Socket(cm.getServerAddress(), cm.getServeurPort());
 	   writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
 	   reader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 	   
-	   System.out.println(reader.readLine());
+	   line = reader.readLine(); //Message de connexion au serveur
 	   
 	   writer.write("EHLO localhost\r\n");
 	   writer.flush();
 	   
 	   line = reader.readLine();
 	   
-	   while(line.startsWith("250-")){
-		   System.out.println(line);
+	   while(line.startsWith("250-")){  //Accès au serveur ok 
 		   line = reader.readLine();
 	   }
 		   
@@ -58,14 +55,14 @@ public class SmtpClient implements ISmtpClient{
 	   writer.write("\r\n");
 	   writer.flush();
 	   
-	   System.out.println("after from " +reader.readLine());
+	   line = reader.readLine(); //Mail From Ok
 	   
 	   for(Person receiver: mail.getReceivers()){
 		   writer.write("RCPT TO:");
 		   writer.write(receiver.getAddress());
 		   writer.write("\r\n");
 		   writer.flush();
-		   System.out.println("after RCPT TO " +reader.readLine());
+		   line = reader.readLine(); //RCPT Ok
 	   }
 	   
 	   
@@ -74,12 +71,12 @@ public class SmtpClient implements ISmtpClient{
 	   writer.write("\r\n");
 	   writer.flush();
 	   
-	   System.out.println("cc: " + reader.readLine());
+	   line = reader.readLine(); //RCPT Ok
 	   
 	   writer.write("DATA");
 	   writer.write("\r\n");
 	   writer.flush();
-	   System.out.println("data: " + reader.readLine());
+	   line = reader.readLine();  //Data Ok
 	   
 	   writer.write(mail.getData());
 	   writer.flush();
@@ -88,11 +85,12 @@ public class SmtpClient implements ISmtpClient{
 	   writer.write(".");
 	   writer.write("\r\n");
 	   writer.flush();
-	   System.out.println("after data " + reader.readLine());
+	   line = reader.readLine();
 	   
 	   writer.write("QUIT");
 	   writer.flush();
 	   writer.close();
+	   reader.close();
 	   socket.close();	   
    }
 }

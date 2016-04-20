@@ -17,16 +17,16 @@ import logic.Person;
 
 /**
  *
- * @author Raphael
+ * @author Raphael Henocq et Luciens badoux
  */
 public class ConfigurationManager {
-	// Raphaël
-	//private final String fileName = "C:\\Heig\\Teaching-HEIGVD-RES-2016-LabBox\\RES\\Laboratoires\\Labo3\\MailRobot\\MailRobot\\Config\\config.properties";
-	//private final String mailList = "C:\\Heig\\Teaching-HEIGVD-RES-2016-LabBox\\RES\\Laboratoires\\Labo3\\MailRobot\\MailRobot\\Config\\victimes.utf8";
-	//private final String messagesList = "C:\\Heig\\Teaching-HEIGVD-RES-2016-LabBox\\RES\\Laboratoires\\Labo3\\MailRobot\\MailRobot\\Config\\messages.utf8";
-	private final String fileName = "C:\\Users\\LBX\\Documents\\_COURS_HEIG\\S2_A2\\RES\\Teaching-HEIGVD-RES-2016-LabBox\\MailRobot\\Config\\config.properties";
-	private final String mailList = "C:\\Users\\LBX\\Documents\\_COURS_HEIG\\S2_A2\\RES\\Teaching-HEIGVD-RES-2016-LabBox\\MailRobot\\Config\\victimes.utf8";
-	private final String messages = "C:\\Users\\LBX\\Documents\\_COURS_HEIG\\S2_A2\\RES\\Teaching-HEIGVD-RES-2016-LabBox\\MailRobot\\Config\\messages.utf8";
+
+	private final String fileName = "C:\\Heig\\Teaching-HEIGVD-RES-2016-LabBox\\RES\\Laboratoires\\Labo3\\RobotMail\\MailRobotGit\\Config\\config.properties";
+	private final String mailList = "C:\\Heig\\Teaching-HEIGVD-RES-2016-LabBox\\RES\\Laboratoires\\Labo3\\RobotMail\\MailRobotGit\\Config\\victimes.utf8";
+	private final String messages = "C:\\Heig\\Teaching-HEIGVD-RES-2016-LabBox\\RES\\Laboratoires\\Labo3\\RobotMail\\MailRobotGit\\Config\\messages.utf8";
+//	private final String fileName = "C:\\Users\\LBX\\Documents\\_COURS_HEIG\\S2_A2\\RES\\Teaching-HEIGVD-RES-2016-LabBox\\MailRobot\\Config\\config.properties";
+//	private final String mailList = "C:\\Users\\LBX\\Documents\\_COURS_HEIG\\S2_A2\\RES\\Teaching-HEIGVD-RES-2016-LabBox\\MailRobot\\Config\\victimes.utf8";
+//	private final String messages = "C:\\Users\\LBX\\Documents\\_COURS_HEIG\\S2_A2\\RES\\Teaching-HEIGVD-RES-2016-LabBox\\MailRobot\\Config\\messages.utf8";
 
 	private Person witnessCC;
 	private String smtpServerAddress;

@@ -7,6 +7,7 @@ package main;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import configData.ConfigurationManager;
@@ -15,30 +16,35 @@ import smtpProtocol.SmtpClient;
 
 /**
  *
- * @author Raphael
+ * @author Raphael Henocq et Luciens badoux
  */
 public class MailRobot {
    
    public static void main(String[] args) throws IOException
    {
       ConfigurationManager cm = new ConfigurationManager();
-      // cm OK
-      /*System.out.println(cm.getServeurAddress());
-      System.out.println(cm.getServeurPort());
-      System.out.println(cm.getNumberOfGroups());
-      System.out.println(cm.getWitnessCc());*/
+
       
       PrankGenerator pg = new PrankGenerator(cm);
       List<Group> groups = pg.generateGroup();
       List<Message> messages = pg.generateMessages();
-      Mail mail = new Mail(groups.get(0), messages.get(0), cm.getWitnessCc());
-	  System.out.println("sender\n" + groups.get(0).getSender().getAddress());
-	  for(Person p:groups.get(0).getReceivers())
-		  System.out.println("receivers\n" + p.getAddress());
-
-      
+      List<Mail> mails = new ArrayList<Mail>();
+      for (int i = 0 ; i < groups.size(); i++)
+      {
+    	  mails.add(new Mail(groups.get(i),messages.get(i),cm.getWitnessCc()));
+      }
+   
       SmtpClient smtpClient = new SmtpClient(cm);
       
-      smtpClient.sendMail(mail);
+      
+      System.out.println("Début envoie des mails ! ");
+      for (int i = 0 ; i < groups.size(); i++)
+      {
+    	  smtpClient.sendMail(mails.get(i));
+      }
+      
+      System.out.println("Mails envoyés ! ");
+      
+     
    }   
 }

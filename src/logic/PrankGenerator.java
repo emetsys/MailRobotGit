@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package logic;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import configData.ConfigurationManager;
 
 /**
  *
- * @author Raphael
+ * @author Raphael Henocq et Luciens badoux
  */
 public class PrankGenerator {
    private ConfigurationManager cm;
@@ -28,7 +23,7 @@ public class PrankGenerator {
       int nbGroups = cm.getNumberOfGroups();
 
       List<Person> personList = cm.getPersonList();
-      int nbPeoplePerGroup = personList.size()/nbGroups; // si 0 groupes arithmetic exception, à voir si on gère
+      int nbPeoplePerGroup = personList.size()/nbGroups; 
       
       List<Person> victims;
       int i;
@@ -57,9 +52,8 @@ public class PrankGenerator {
    }
    
    public List<Message> generateMessages()
-   {
-      //List<Prank> pranks = new ArrayList<Prank>();     
-      return cm.getMessagesList();  // sortir un message random?
+   {   
+      return cm.getMessagesList();  
    }      
    
 }

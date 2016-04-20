@@ -3,7 +3,7 @@ package logic;
 
 /**
  *
- * @author Raphael
+ * @author Raphael Henocq et Luciens badoux
  */
 public class Person {
    private String address;

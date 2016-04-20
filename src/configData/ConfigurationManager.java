@@ -29,7 +29,7 @@ public class ConfigurationManager {
 	private final String messages = "C:\\Users\\LBX\\Documents\\_COURS_HEIG\\S2_A2\\RES\\Teaching-HEIGVD-RES-2016-LabBox\\MailRobot\\Config\\messages.utf8";
 
 	private Person witnessCC;
-	private String smtpServeurAddress;
+	private String smtpServerAddress;
 	private int smtpServerPort;
 	private int numberOfGroups;
 	private List<Person> personList = new LinkedList<Person>();
@@ -43,7 +43,7 @@ public class ConfigurationManager {
 			input = new BufferedReader(new FileReader(fileName));
 			line = input.readLine();
 			line = line.substring(line.indexOf('=') + 1);
-			smtpServeurAddress = line;
+			smtpServerAddress = line;
 
 			line = input.readLine();
 			line = line.substring(line.indexOf('=') + 1);
@@ -92,24 +92,18 @@ public class ConfigurationManager {
 			input = new BufferedReader(new FileReader(messages));
 
 			line = input.readLine();		
-			line = line.replaceAll("\\s", ""); // pas forcément nécessaire
 			
-	
 			while (line != null) {
 				message = "";
-				// c'est la mort mais je peux pas faire .equals si line est null
 				if(line.equals(delimiter)){
 					line = input.readLine();
-					while((!(line.equals(delimiter))) && line != null){
+					while(line != null && (!(line.equals(delimiter)))){
 						message+=line+"\n";	
 						line = input.readLine();
-						if(line == null) break;
 					}
 					messagesList.add(new Message(message));
 				}
-			}
-			
-			
+			}			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -129,8 +123,8 @@ public class ConfigurationManager {
 		return witnessCC;
 	}
 
-	public String getServeurAddress() {
-		return smtpServeurAddress;
+	public String getServerAddress() {
+		return smtpServerAddress;
 	}
 
 	public int getServeurPort() {

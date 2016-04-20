@@ -32,9 +32,9 @@ public class MailRobot {
       List<Group> groups = pg.generateGroup();
       List<Message> messages = pg.generateMessages();
       Mail mail = new Mail(groups.get(0), messages.get(0), cm.getWitnessCc());
-	  /*System.out.println("sender\n" + groups.get(0).getSender().getAddress());
+	  System.out.println("sender\n" + groups.get(0).getSender().getAddress());
 	  for(Person p:groups.get(0).getReceivers())
-		  System.out.println("receivers\n" + p.getAddress());*/
+		  System.out.println("receivers\n" + p.getAddress());
 
       
       SmtpClient smtpClient = new SmtpClient(cm);

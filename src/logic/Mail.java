@@ -31,25 +31,20 @@ public class Mail {
 		return group.getSender().getAddress();
 	}
 
-	/*public String getReceivers() {
-		String tmp = "";
-		for (Person p : group.getReceivers())
-			tmp += p.getAddress() + ";";
-		return tmp;
-	}*/
-	public List<String> getReceivers(){ // je sais plus si c'est possible avec un foreach
+	public List<Person> getReceivers(){ // je sais plus si c'est possible avec un foreach
 		
-		List<String> tmp = new LinkedList<String>();
-		for (Person p : group.getReceivers())
-			tmp.add(p.getAddress());
-		return tmp;
+		return group.getReceivers();
 	}
 
 	public String getData() {
 		String data = "";
-		data += "From : " + getSender() + "\n";
-		data += "To :" + getReceivers()+ "\n";
-		data += "Cc :" + witnessCc.getAddress()+ "\n\n";
+		data += "From: " + getSender() + "\n";
+		data += "To: ";
+		for(Person p:getReceivers())
+			data+= p.getAddress()+ ",";
+		data = data.substring(0, data.length()-1);
+		data += "\n";
+		data += "Cc: " + witnessCc.getAddress()+ "\n";
 		data += message.getMessage();
 
 		return data;

@@ -5,6 +5,7 @@
  */
 package logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class Group {
    private Person sender;
-   private List<Person> receivers;
+   private List<Person> receivers = new ArrayList<Person>();
    
    public Group(Person sender, List<Person> receivers)
    {
